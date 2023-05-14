@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Irenggolo 360&deg; Virtual Tour</title>
+  <meta name="description" content="A Journey to Irenggolo Waterfall" />
+  <link rel="icon" sizes="192x192" href="https://ik.imagekit.io/exfrozze/icon/3175149.png?updatedAt=1684045328016">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+
+  <script id="link" type="text/html">
+    <a-entity class="link" geometry="primitive: plane; height: 1; width: 1" material="shader: flat; src: ${thumb}"
+      event-set__mouseenter="scale: 1.2 1.2 1" event-set__mouseleave="scale: 1 1 1"
+      event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+      proxy-event="event: click; to: #image-360; as: fade" sound="on: click; src: #click-sound"></a-entity>
+  </script>
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <!-- GAMBAR HOMEPAGE -->
+      <img id="gazebo" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/13.jpg?updatedAt=1683900312383" />
+      <!-- end GAMBAR HOMEPAGE -->
+
+      <!-- 360 IMG -->
+      <img id="kelok9" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/11.jpg?updatedAt=1683900300361" />
+      <!-- THUMBNAIL -->
+      <img id="kelok9-thumb" crossorigin="anonymous"
+        src="https://ik.imagekit.io/exfrozze/Thumbnail/2.jpg?updatedAt=1683903928149" />
+      <!-- 360 IMG -->
+      <img id="airterjun" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/6.jpg?updatedAt=1683900299337" />
+      <!-- THUMBNAIL -->
+      <img id="airterjun-thumb" crossorigin="anonymous"
+        src="https://ik.imagekit.io/exfrozze/Thumbnail/1.jpg?updatedAt=1683903928167" />
+      <!-- 360 IMG -->
+      <img id="pintu" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/3.jpg?updatedAt=1683900300653" />
+      <!-- THUMBNAIL -->
+      <img id="pintu-thumb" crossorigin="anonymous"
+        src="https://ik.imagekit.io/exfrozze/Thumbnail/3.jpg?updatedAt=1683904470406" />
+      <img id="airterjun" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/6.jpg?updatedAt=1683900299337" />
+      <img id="pintu" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/3.jpg?updatedAt=1683900300653" />
+      <!-- 360 IMG -->
+      <img id="taman" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/10.jpg?updatedAt=1683900299234" />
+      <!-- THUMBNAIL -->
+      <img id="taman-thumb" crossorigin="anonymous"
+        src="https://ik.imagekit.io/exfrozze/Thumbnail/4.jpg?updatedAt=1684039983642" />
+      <!-- 360 IMG -->
+      <img id="gazebo" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/15.jpg?updatedAt=1683900313628" />
+      <!-- THUMBNAIL -->
+      <img id="gazebo-thumb" crossorigin="anonymous"
+        src="https://ik.imagekit.io/exfrozze/Thumbnail/5.jpg?updatedAt=1684040950181" />
+
+      <!-- AUDIO CLICK -->
+      <audio id="click-sound" crossorigin="anonymous"
+      src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg">
+      </audio>
+    </a-assets>
+
+    <!-- TITTLE -->
+    <a-entity geometry="primitive: plane; height: 1; width: 2.5" material="color:blue; side: double; opacity:0.5;" position="0.10 2.10 -4" rotation="0 0 0" href="index.html"></a-entity>
+    <a-text font="kelsonsans" value="Virtual Tour" width="7" position="0.10 2.10 -4" rotation="0 0 0" align="center" text=""></a-text>
+    <!-- TITTLE -->
+    <a-sky id="image-360" radius="10" src="#gazebo"
+      animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+      animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade">
+    </a-sky>
+
+    <!-- Image links [ BAGIAN NGELINK ]-->
+    <!-- MARGIN = KEREKATAN GAMBAR -->
+    <!-- POSISI = KIRI KANAN x ATAS/BAWAH x JAUH/DEKAT -->
+    <a-entity id="links" layout="type: line; margin: 1.05" position="-2 1 -4">
+      <a-entity template="src: #link" data-src="#kelok9" data-thumb="#kelok9-thumb"></a-entity>
+      <a-entity template="src: #link" data-src="#pintu" data-thumb="#pintu-thumb"></a-entity>
+      <a-entity template="src: #link" data-src="#taman" data-thumb="#taman-thumb"></a-entity>
+      <a-entity template="src: #link" data-src="#airterjun" data-thumb="#airterjun-thumb"></a-entity>
+      <a-entity template="src: #link" data-src="#gazebo" data-thumb="#gazebo-thumb"></a-entity>
+    </a-entity>
+
+    <!-- Camera + cursor -->
+    <a-entity>
+      <a-camera id="camera" look-controls="" wasd-controlsenabled="false" camera="active: true"
+        rotation="-1.3750987083139854 -3.0939720937064483 0" position="0 0 0">
+        <a-cursor id="cursor" cursor="fuse: true; fuseTimeout: 1500;
+maxDistance: 30" geometry="primitive: ring; radiusInner: 0.031;
+radiusOuter: 0.05" material="color: #00FFFF; shader: flat" position="0 0 -1" animation__click="property: scale; startEvents: click;
+easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1" animation__fusing="property: scale; startEvents: fusing;
+easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1" animation__mouseleave="property: scale; startEvents:
+mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1">
+        </a-cursor>
+      </a-camera>
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>
