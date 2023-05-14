@@ -24,7 +24,7 @@
   <a-scene>
     <a-assets>
       <!-- GAMBAR HOMEPAGE -->
-      <img id="gazebo" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/13.jpg?updatedAt=1683900312383" />
+      <img id="home" crossorigin="anonymous" src="https://ik.imagekit.io/exfrozze/13.jpg?updatedAt=1683900312383" />
       <!-- end GAMBAR HOMEPAGE -->
 
       <!-- 360 IMG -->
@@ -65,7 +65,7 @@
     <a-entity geometry="primitive: plane; height: 1; width: 2.5" material="color:blue; side: double; opacity:0.5;" position="0.10 2.10 -4" rotation="0 0 0" href="index.html"></a-entity>
     <a-text font="kelsonsans" value="Virtual Tour" width="7" position="0.10 2.10 -4" rotation="0 0 0" align="center" text=""></a-text>
     <!-- TITTLE -->
-    <a-sky id="image-360" radius="10" src="#gazebo"
+    <a-sky id="image-360" radius="10" src="#home"
       animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
       animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade">
     </a-sky>
